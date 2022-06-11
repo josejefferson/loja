@@ -13,10 +13,8 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 /** Routes */
-app.use('/admins', require('@routes/admins'))
 app.use('/ads', require('@routes/ads'))
 app.use('/auth', require('@routes/auth'))
-app.use('/clients', require('@routes/clients'))
 app.use('/highlights', require('@routes/highlights'))
 app.use('/images', require('@routes/images'))
 app.use('/logs', require('@routes/logs'))
