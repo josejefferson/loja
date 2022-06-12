@@ -17,5 +17,9 @@
     "svelte": "^3.44.0",
     "vite": "^2.9.9"
   },
-  "dependencies": {}
+  "dependencies": {
+    "axios": "^0.27.2",
+    "svelte-navigator": "^3.1.6",
+    "sveltestrap": "^5.9.0"
+  }
 }
