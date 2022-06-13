@@ -12,6 +12,10 @@
   fetchData()
 </script>
 
+<svelte:head>
+  <title>Loja</title>
+</svelte:head>
+
 <div class="bg-light py-5 mb-5">
   <Container>
     <h1 class="display-4">Bem-vindo(a)!</h1>

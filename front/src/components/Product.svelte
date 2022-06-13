@@ -1,5 +1,5 @@
 <script>
-	import { Link } from 'svelte-navigator'
+	// import { Link } from 'svelte-navigator'
 	import { Col, CardBody, CardText } from 'sveltestrap'
 	import { money } from '../lib/money'
 	
@@ -15,7 +15,7 @@
 </script>
 
 <Col md=4 lg=3 class="store-product px-1 py-1">
-	<Link to="/products/view/{product._id}" class="card shadow text-decoration-none text-dark h-100">
+	<a href="/products/view/{product._id}" class="card shadow text-decoration-none text-dark h-100">
 		{#if product.badge}
 			<div class="store-product-badge position-absolute top-0 end-0 bg-danger text-white p-1">{product.badge}</div>
 		{/if}
@@ -65,7 +65,7 @@
 				</div>
 			</CardText>
 		</CardBody>
-	</Link>
+	</a>
 </Col>
 
 <style>

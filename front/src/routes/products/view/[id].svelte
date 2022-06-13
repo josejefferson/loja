@@ -1,13 +1,14 @@
-
 <script>
 	import { Container } from 'sveltestrap'
-	import axios from '../lib/api'
-	import { money } from '../lib/money'
+	import axios from '../../../lib/api'
+	import { money } from '../../../lib/money'
+	import { browser } from '$app/env'
+	import { page } from '$app/stores'
 
-	export let id
+	const id = $page.params.id
 	let product
 	let cart = []
-	let fullURL = window.location.href
+	let fullURL = browser ? window.location.href : ''
 
 	let promise
   function fetchData() {
@@ -26,6 +27,10 @@
 	}
 </script>
 
+<svelte:head>
+	<title>{product?.name || 'Produto'} - Loja</title>
+</svelte:head>
+
 {#await promise}
 	Loading...
 {:then}
@@ -39,10 +44,10 @@
 			{#each product.media as media, i}
 				<div class="carousel-item	ratio ratio-16x9" class:active={i === 0}>
 					{#if media.type === 'image.id' || media.type === 'image.url'}
-						{@const imageURL = (product.image.type === 'image.id' ? '/images/view/' : '') + product.image?.value}
-						<img src={imageURL} class="d-block w-100" style="object-fit:contain;max-height:300px">
+						{@const imageURL = (product.image?.type === 'image.id' ? '/images/view/' : '') + product.image?.value}
+						<img src={imageURL} alt={product.image?.alt} class="d-block w-100" style="object-fit:contain;max-height:300px">
 					{:else if media.type === 'youtube'}
-						<iframe src="https://www.youtube-nocookie.com/embed/{media.value}?rel=0" frameborder="0" style="max-height:300px"></iframe>
+						<iframe src="https://www.youtube-nocookie.com/embed/{media.value}?rel=0" title="YouTube Video" frameborder="0" style="max-height:300px"></iframe>
 					{/if}
 				</div>
 			{/each}
@@ -141,7 +146,3 @@
 		white-space: nowrap;
 	}
 </style>
-
-<svelte:head>
-	<title>{product?.name || 'Produto'} - Loja</title>
-</svelte:head>
